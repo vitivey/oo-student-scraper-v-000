@@ -31,7 +31,7 @@ class Scraper
         value = card.css(".social-icon-container a")[count]["href"]
         key=value.scan(/\/\b(...*)\./).flatten[0]
         key = key.split(".")[-1] if key.include?(".")
-          if key != "blog"
+          if key == "twitter" || key == "github" || key == "linkedin"
             key=key.to_sym
           else
             key=:blog
