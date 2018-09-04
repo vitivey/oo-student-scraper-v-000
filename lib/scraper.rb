@@ -37,8 +37,8 @@ class Scraper
               else
                 key=:blog
               end
-          
-          hash[key]= value if value.length >2
+
+          hash[key]= value #if value.length >2
           end
         count+=1
       end
