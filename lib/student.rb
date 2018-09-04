@@ -6,13 +6,12 @@ class Student
   @@all = []
 
   def initialize(student_hash)
-
+    student_hash={:name=>"Alex Patriquin", :location=>"New York, NY"}
   end
 
   def self.create_from_collection(students_array)
     students_array.each do |student|
       Student.new(student)
-      binding.pry
     end
   end
 
