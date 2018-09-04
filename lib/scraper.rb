@@ -39,11 +39,11 @@ class Scraper
         hash[key]= value
         count+=1
       end
-      hash[profile_quote:]= "#{card.css(".profile-quote").text.strip}" #card.css(".profile-quote").text.split('"')
+      hash[:profile_quote]= "#{card.css(".profile-quote").text.strip}" #card.css(".profile-quote").text.split('"')
 
     end
     scraped_content.css(".details-container").each do |card|
-    hash[bio:]= "#{card.css(".bio-block .description-holder").text.strip}"
+    hash[:bio]= "#{card.css(".bio-block .description-holder").text.strip}"
     end
     scraped_list=[]
     scraped_list << hash
