@@ -41,28 +41,15 @@ class Scraper
         count+=1
       end
       scraped_list << {profile_quote: "#{card.css(".profile-quote").text.strip}"}
-      binding.pry
 
     end
-
-
-
-    # scraped_list << {
-    #                   "#{card.css(".social-icon-container a")[0]["href"].split(".")[1]}:" "#{card.css(".social-icon-container a")[0]["href"]}" if "#{card.css(".social-icon-container a")[0]["href"]}".is_a?String,
-    #                   "#{card.css(".social-icon-container a")[1]["href"].split(".")[1]}:" "#{card.css(".social-icon-container a")[1]["href"]}" if "#{card.css(".social-icon-container a")[1]["href"]}".is_a?String,
-    #                   "#{card.css(".social-icon-container a")[2]["href"].split(".")[1]}:" "#{card.css(".social-icon-container a")[2]["href"]}" if "#{card.css(".social-icon-container a")[2]["href"]}".is_a?String,
-    #                   profile_quote: "#{card.css(".profile-quote").text.strip}"
-    #                 }
-    # end
-
     scraped_content.css(".details-container").each do |card|
-    scraped_list << {
-                      #blog: "#{card.css("a").first["href"]}",
-                      bio: "#{card.css(".bio-block .description-holder").text.strip}"
-                    }
+    scraped_list << {bio: "#{card.css(".bio-block .description-holder").text.strip}"}
     end
 
     scraped_list
+    binding.pry
+
   end
 
 end
