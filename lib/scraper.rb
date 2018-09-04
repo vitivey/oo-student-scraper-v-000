@@ -44,10 +44,8 @@ class Scraper
     scraped_content.css(".details-container").each do |card|
     hash[:bio]= "#{card.css(".bio-block .description-holder").text.strip}"
     end
-    scraped_list=[]
-    scraped_list << hash
-    scraped_list
-    binding.pry
+    hash
+    # binding.pry
 
   end
 
