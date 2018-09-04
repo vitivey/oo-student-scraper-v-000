@@ -40,7 +40,7 @@ class Scraper
         count+=1
       end
       hash[:profile_quote]= "#{card.css(".profile-quote").text.strip}" #card.css(".profile-quote").text.split('"')
-
+binding.pry
     end
     scraped_content.css(".details-container").each do |card|
     hash[:bio]= "#{card.css(".bio-block .description-holder").text.strip}"
