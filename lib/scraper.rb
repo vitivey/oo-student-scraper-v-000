@@ -40,7 +40,7 @@ class Scraper
         scraped_list << hash
         count+=1
       end
-      scraped_list << {profile_quote: "#{card.css(".profile-quote").text.strip}"}
+      scraped_list << {profile_quote: "#{card.css(".profile-quote").text.strip}" binding.pry}
 
     end
     scraped_content.css(".details-container").each do |card|
@@ -48,7 +48,7 @@ class Scraper
     end
 
     scraped_list
-    binding.pry
+    
 
   end
 
