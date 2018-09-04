@@ -26,15 +26,17 @@ class Scraper
     scraped_list=[]
     scraped_content.css(".vitals-container").each do |card|
       binding.pry
+
+      value = card.css(".social-icon-container a")[0]["href"]
+      key=value.scan(/\/\b(...*)\./).flatten[0]
+      key = key.split(".")[-1] if key.include?(".")
+      key=key.to_sym
+      hash={key => value}
       scraped_list << {profile_quote: "#{card.css(".profile-quote").text.strip}"}
     end
+        
 
-        value = card.css(".social-icon-container a")[0]["href"]
-        key=value.scan(/\/\b(...*)\./).flatten[0]
-        key = key.split(".")[-1] if key.include?(".")
-        key=key.to_sym
-        a={key => value}
-
+        
     # scraped_list << {
     #                   "#{card.css(".social-icon-container a")[0]["href"].split(".")[1]}:" "#{card.css(".social-icon-container a")[0]["href"]}" if "#{card.css(".social-icon-container a")[0]["href"]}".is_a?String,
     #                   "#{card.css(".social-icon-container a")[1]["href"].split(".")[1]}:" "#{card.css(".social-icon-container a")[1]["href"]}" if "#{card.css(".social-icon-container a")[1]["href"]}".is_a?String,
