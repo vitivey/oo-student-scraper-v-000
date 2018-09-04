@@ -30,13 +30,15 @@ class Scraper
       while count < num_social
         value = card.css(".social-icon-container a")[count]["href"]
         key=value.scan(/\/\b(...*)\./).flatten[0]
-        key = key.split(".")[-1] if key !=nil || key.include?(".")
-          if key == "twitter" || key == "github" || key == "linkedin"
-            key=key.to_sym
-          else
-            key=:blog
-          end
-        hash[key]= value
+        if key !=nil
+          key = key.split(".")[-1] if key.include?(".")
+            if key == "twitter" || key == "github" || key == "linkedin"
+              key=key.to_sym
+            else
+              key=:blog
+            end
+          hash[key]= value
+        end
         count+=1
       end
       hash[:profile_quote]= "#{card.css(".profile-quote").text.strip}" #card.css(".profile-quote").text.split('"')
