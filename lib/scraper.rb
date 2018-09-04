@@ -37,9 +37,9 @@ class Scraper
               else
                 key=:blog
               end
-          end
+          
           hash[key]= value if value.length >2
-
+          end
         count+=1
       end
       hash[:profile_quote]= "#{card.css(".profile-quote").text.strip}" #card.css(".profile-quote").text.split('"')
