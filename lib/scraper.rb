@@ -26,17 +26,22 @@ class Scraper
     scraped_list=[]
     scraped_content.css(".vitals-container").each do |card|
       binding.pry
-      card.css(".social-icon-container a").count
-      value = card.css(".social-icon-container a")[0]["href"]
-      key=value.scan(/\/\b(...*)\./).flatten[0]
-      key = key.split(".")[-1] if key.include?(".")
-      if key != "blog"
-        key=key.to_sym
-      else
-        key=:blog
+      count=0
+      num_social=card.css(".social-icon-container a").count
+      while count < num_social       
+        value = card.css(".social-icon-container a")[count]["href"]
+        key=value.scan(/\/\b(...*)\./).flatten[0]
+        key = key.split(".")[-1] if key.include?(".")
+        if key != "blog"
+          key=key.to_sym
+        else
+          key=:blog
+        end
+        hash={key => value}
+        scraped_list << hash
+        count+=1
       end
-
-      hash={key => value}
+      
       scraped_list << {profile_quote: "#{card.css(".profile-quote").text.strip}"}
     end
 
