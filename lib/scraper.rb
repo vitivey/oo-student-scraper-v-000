@@ -48,7 +48,7 @@ class Scraper
     end
 
     scraped_list
-    
+
 
   end
 
